@@ -15,25 +15,28 @@
 #define BAG_OF_BINARY_WORDS_BINARY_DESCRIPTOR_H
 
 #include <array>
+#include <cstddef>
 #include <cstdint>
 
 namespace bag_of_binary_words {
 
-/**
- * @brief BRIEF (Binary Robust Independent Elementary Features) descriptor
- * 
- * From paper Table IV:
- * - Descriptor length (L_b): 256 bits
- * - Storage: 256 bits / 8 = 32 bytes
- * 
- * Each bit represents one intensity comparison test.
- */
-using BriefBinaryDescriptor = std::array<uint8_t, 32>;
+    /**
+    * @brief BRIEF (Binary Robust Independent Elementary Features) descriptor
+    * 
+    * From paper Table IV:
+    * - Descriptor length (L_b): 256 bits
+    * - Storage: 256 bits / 8 = 32 bytes
+    * 
+    * Each bit represents one intensity comparison test.
+    */
+    // "using" creates a type alias  
+    // BriefBinaryDescriptor equals a fixed array of 32 bytes
+    using BriefBinaryDescriptor = std::array<uint8_t, 32>;
 
-// Constants from paper Table IV
-constexpr size_t BRIEF_DESCRIPTOR_LENGTH_BITS = 256;
-constexpr size_t BRIEF_DESCRIPTOR_LENGTH_BYTES = 32;
-constexpr size_t BRIEF_PATCH_SIZE_PIXELS = 48;  // S_b from Table IV
+    // Constants from paper Table IV
+    constexpr size_t BRIEF_DESCRIPTOR_LENGTH_BITS = 256;
+    constexpr size_t BRIEF_DESCRIPTOR_LENGTH_BYTES = 32;
+    constexpr size_t BRIEF_PATCH_SIZE_PIXELS = 48;  
 
 } // namespace bag_of_binary_words
 
