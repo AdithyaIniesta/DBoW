@@ -55,5 +55,13 @@ namespace bag_of_binary_words {
         {-1, -3}   // Pixel 15: top-left
     }; // End of BRESENHAM_CIRCLE array
 
+    bool isCorner(
+        const unsigned char* image, 
+        int width, 
+        int x, 
+        int y, 
+        int threshold
+    ); 
+    
 } // namespace bag_of_binary_words 
 #endif

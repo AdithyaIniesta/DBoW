@@ -11,7 +11,8 @@
 */
 
 #include <algorithm>
-#include "fast_detector.hpp"
+
+#include "bag_of_binary_words/fast_detector.hpp"
 
 namespace bag_of_binary_words{
 
@@ -102,4 +103,54 @@ namespace bag_of_binary_words{
         }
         return false;
     }
+
+    // Paste here
+    /**
+    * @brief Detect all FAST corners in entire image
+    * 
+    * ALGORITHM: 
+    * 1. Skip three pixel border (circle does not fit there)
+    * 2. For each interior pixel, test if it is a corner
+    * 3. If corner found, create FastCornerKeypoint and add to list
+    * 4. Return all detected corners 
+    * 
+    * PERFORMANCE NOTE (from paper):
+    * "Feature extraction requires 22ms per frame"
+    * This includes FAST detection + BRIEF computation 
+    * FAST alone is much faster (~3-5ms typical)
+    */
+
+    std::vector<FastCornerKeypoint> detectFastCorners(
+        const unsigned char* grayscale_image, 
+        int image_width, 
+        int image_height, 
+        int corner_threshold
+    ){
+
+        // Output: list of detected corners
+        std::vector<FastCornerKeypoint> detected_corners;
+        // Pre-allocate (optimization)
+        detected_corners.reserve(500);
+
+        // Scan image, skipping three pixels border
+        // Why 3? Bresenham circle has radius 3, so we need 3 pixels margin 
+        // Start at (3, 3), end at (width-3, height-3)
+        for(int y = 0; y < image_height - 3; y++){
+            for(int x = 0; x < image_width - 3; x++){
+
+                // Test if pixel is a corner
+                if (isCorner(grayscale_image, image_width, x, y, corner_threshold)){
+                
+                    // Create corner keypoint 
+                    FastCornerKeypoint corner;
+                    corner.x_coordinate = static_cast<float>(x);
+                    corner.y_coordinate = static_cast<float>(y);
+                    corner.corner_response = 1.0f;
+                    detected_corners.push_back(corner);
+                }
+            }
+        }
+        return detected_corners;
+    }
 }
+
