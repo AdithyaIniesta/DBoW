@@ -109,7 +109,7 @@ make
 ```bibtex
 @article{galvez2012bags,
   title={Bags of binary words for fast place recognition in image sequences},
-  author={G{\'a}lvez-L{\'o}pez, Dorian and Tard{\'o}s, Juan D},
+  author={Galvez-Lopez, Dorian and Tardos, Juan D},
   journal={IEEE Transactions on Robotics},
   volume={28},
   number={5},
