@@ -1,4 +1,0 @@
-/home/hp/Documents/DBoW/build/CMakeFiles/bag_of_binary_words.dir
-/home/hp/Documents/DBoW/build/CMakeFiles/test_bow.dir
-/home/hp/Documents/DBoW/build/CMakeFiles/edit_cache.dir
-/home/hp/Documents/DBoW/build/CMakeFiles/rebuild_cache.dir
