@@ -63,5 +63,11 @@ namespace bag_of_binary_words {
         int threshold
     ); 
     
+    std::vector<FastCornerKeypoint> detectFastCorners(
+        const unsigned char* grayscale_image, 
+        int image_width, 
+        int image_height, 
+        int corner_threshold
+    ); 
 } // namespace bag_of_binary_words 
 #endif

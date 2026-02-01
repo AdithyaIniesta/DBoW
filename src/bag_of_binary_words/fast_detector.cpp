@@ -12,7 +12,7 @@
 
 #include <algorithm>
 
-#include "bag_of_binary_words/fast_detector.hpp"
+#include "fast_detector.hpp"
 
 namespace bag_of_binary_words{
 
@@ -135,8 +135,8 @@ namespace bag_of_binary_words{
         // Scan image, skipping three pixels border
         // Why 3? Bresenham circle has radius 3, so we need 3 pixels margin 
         // Start at (3, 3), end at (width-3, height-3)
-        for(int y = 0; y < image_height - 3; y++){
-            for(int x = 0; x < image_width - 3; x++){
+        for(int y = 3; y < image_height - 3; y++){
+            for(int x = 3; x < image_width - 3; x++){
 
                 // Test if pixel is a corner
                 if (isCorner(grayscale_image, image_width, x, y, corner_threshold)){
